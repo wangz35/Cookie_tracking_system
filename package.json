@@ -1,0 +1,18 @@
+{
+  "name": "cookie_tracking_system",
+  "version": "1.0.0",
+  "description": "Behavioral Analysis of Users in Response to Cookie Consent Prompts:Designing a system and then collecting data. Analyze the behavior of users when they are presented with cookie consent prompts on websites",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.1"
+  }
+}
