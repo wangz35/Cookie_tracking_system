@@ -11,3 +11,18 @@ But this law can sometime be not that effective. Usually we can see 'more option
 And if you click on the less obvious button, you will be bring to a bunch of other options for disabling specific types so say it may take more than 20 seconds to configure all the options where you just want to spend like 5 seconds on the website in looking for the item you want.
 
 In the project, we are aiming to find out how and why cookies are important and do a research on the user behavior on cookies, and list the potential solutions.
+
+# Running the code
+
+1. Install npm 
+2. npm init -y
+3. npm install uuid
+4. npm install express sqlite3
+5. node server.js
+
+This will run the server
+
+To see the database:
+1. sqlite3 userPreferences.db
+2. SELECT * FROM user_preferences;
+3. .exit

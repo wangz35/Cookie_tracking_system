@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cookie Consent Box</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div id="buttonclass" class="content">
+      <header>Cookies Consent</header>
+      <p>This website uses cookies to ensure you get the best experience on our website.</p>
+      <div class="buttons">
+        <button class="item">Accept all</button>
+        <button id="showButton" onclick="showOptions()">More options</button>
+      </div>
+    </div>
+    <div id="options" class = "content" style="display: none;">
+      <p>Please select and accept your tracking preferences:</p>
+      <label>
+          <input type="radio" name="size" value="large"> Marketing (feature personalised ads)
+      </label>
+      <br>
+      <label>
+          <input type="radio" name="size" value="medium"> Functional (improve the website)
+      </label>
+      <br>
+      <label>
+          <input type="radio" name="size" value="small"> Required (give website access)
+      </label>
+      <p>Want to learn more about how website tracks you? Check out our privacy notice.</p>
+      <br>
+      <div class="buttons">
+        <button class="item" onclick="saveSelection()">Save</button>
+        <button class="item" onclick="hideOptions()">back</button>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    const cookieBox = document.querySelector(".wrapper"),
+    acceptBtn = cookieBox.querySelector("button"),
+    learnMoreLink = document.querySelector(".learn-more");
+
+    acceptBtn.onclick = ()=>{
+      //setting cookie for 1 month, after one month it'll be expired automatically
+      document.cookie = "CookieBy=CodingNepal; max-age="+60*60*24*30;
+      if(document.cookie){ //if cookie is set
+        cookieBox.classList.add("hide"); //hide cookie box
+      }else{ //if cookie not set then alert an error
+        alert("Cookie can't be set! Please unblock this site from the cookie setting of your browser.");
+      }
+    }
+
+        function showOptions() {
+            document.getElementById('buttonclass').style.display = 'none';
+            document.getElementById('options').style.display = 'block';
+        }
+
+        function hideOptions() {
+            document.getElementById('options').style.display = 'none';
+            document.getElementById('buttonclass').style.display = 'block';
+        }
+
+        function saveSelection() {
+            const selectedSize = document.querySelector('input[name="size"]:checked');
+
+            if (selectedSize) {
+                const preference = selectedSize.value;
+
+                // Make a POST request to store user preferences
+                fetch('http://localhost:3000/api/store-preferences', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ preference }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.message);
+                    // Set a cookie to indicate that the user has made a preference
+                    document.cookie = `userPreferenceSet=true; expires=${new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString()}; path=/`;
+                    // Set a cookie to indicate that the user has visited the 'more options' page
+                    document.cookie = `moreOptionsVisited=true; expires=${new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString()}; path=/`;
+                    // Hide the options and cookie box
+                    hideOptions();
+                    cookieBox.classList.add("hide");
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Handle error, e.g., show an alert to the user
+                    alert('Failed to save preferences. Please try again.');
+                });
+            } else {
+                alert('Please make a selection');
+            }
+        }
+
+
+
+    let checkCookie = document.cookie.indexOf("CookieBy=CodingNepal"); //checking our cookie
+    //if cookie is set then hide the cookie box else show it
+    checkCookie != -1 ? cookieBox.classList.add("hide") : cookieBox.classList.remove("hide");
+  </script>
+
+</body>
+</html>
