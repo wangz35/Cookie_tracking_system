@@ -6,7 +6,7 @@
   font-family: 'Poppins', sans-serif;
 }
 body{
-  background: hsl(182, 100%, 48%);
+  background: url('/image.png');
 }
 
 #options {
@@ -21,12 +21,13 @@ body{
   position: absolute;
   top: 50%;
   left: 50%;
-  max-width: 365px;
+  max-width: 500px;
   background: #fff;
   padding: 25px 25px 30px 25px;
   border-radius: 15px;
   box-shadow: 1px 7px 14px -5px rgba(0,0,0,0.15);
   text-align: center;
+  transform: translate(-50%, -50%);
 }
 .wrapper.hide{
   opacity: 0;
@@ -77,4 +78,46 @@ body{
 }
 .buttons a{
   color: #FFF;
+}
+
+.intro-text {
+  text-align: left;
+}
+
+label {
+  text-align: left;
+  display: block; 
+  margin: 5px 0; 
+  padding: 0px 0; 
+  position: relative
+}
+
+label:hover {
+  background-color: #f5f5f5; 
+  cursor: pointer; 
+}
+label.essential-cookies::after{
+  content: 'These cookies (or similar technologies) are essential for the website to function, manage the security of the website (including to detect and prevent fraudulent activity), and/or to provide access to features and functionality on the website, and cannot be switched off. They are usually set in response to actions requesting services, such as setting your privacy preferences, adding items to or purchasing items from your cart, logging in, or filling in forms. These are also used to provide enhanced functionality and personalization, like web chat services, product recommendations, predictive sort, product search, and commenting and rating systems. These may be set by us or third-party providers whose services we use. Providers of these services may use their own analytics cookies (or similar technologies) to measure performance of these services. You may be able to use your browser\'s settings to block or alert you about these cookies, but some parts of the site may not work properly.';
+}
+label.analytics-cookies::after{
+  content: 'These cookies (and similar tracking technologies), including from Google Analytics and Glassbox, allow us to count visits and traffic sources and understand what pages are the most and least popular so we can measure and improve the performance of our site. They also help us track and replay a visitor’s journey on our site to understand how visitors move around and interact with the site. We use Google Analytics Advertising Features to share information with Google about your use of this site to in order to allow us to deliver relevant and personalized advertising or content to you on other sites, to receive demographic and interest data from Google in our analytics reports, and to create audience segments based on demographic and interest data. If you do not agree to our use of analytics cookies, we will disable them. We may continue to use Google Analytics to enable us to collect information about the use of our site (with Google Analytics Advertising Features disabled) and Glassbox.';
+}
+label.marketing-cookies::after{
+  content: 'These cookies (or similar technologies) may be set through our site by advertising providers. They are used by these companies to build a profile of your interests and show you relevant advertisements from Us or other advertisers on other sites or to other devices connected to you (cross-device advertising), as well as improve their products and optimize their own ad targeting systems. We use these technologies to measure the effectiveness of our ads and to optimize our own marketing campaigns. We also use a data management platform that uses cookies (or similar technologies) to collect information to help us serve advertisements and send you emails, offers, and other personalized communications that may be of interest to you. These cookies (or similar technologies) will generally collect pseudonymous data about your visit to our website (such as purchases, pageviews, and clicks associated with an IP address or cookie ID), however, we use features provided by our advertising partners to collect personal information you enter on our site (such as phone number or email address) and share it with companies such as Google or Facebook. We use this information to connect your account with these companies with your activities on our to (i) enhance measurement of our advertisements (e.g., identify if an individual saw our advertisement and then visited our website) and (ii) identify groups of alike consumers to optimize our own marketing campaigns. If you do not allow these cookies (or similar technologies), you will experience less targeted advertising.';
+}
+label::after {
+  display: none;
+  position: absolute;
+  bottom: 100%; /* 将工具提示显示在标签的上方 */
+  left: 50%; /* 工具提示左对齐到标签的中心 */
+  background-color: rgb(17, 68, 110);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  z-index: 1000; /* 确保工具提示显示在其他元素之上 */
+  width: 800px;
+}
+
+label:hover::after {
+  display: block;
 }
