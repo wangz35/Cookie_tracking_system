@@ -1,5 +1,7 @@
 # Cookie Tracking System
 
+![Cookie Consent Prompt](images/cookie_welcome.png)
+
 This project involves the behavioral analysis of users in response to cookie consent prompts. The goal is to design a system, collect data, and analyze how users behave when presented with cookie consent prompts on websites.
 
 ## Table of Contents
